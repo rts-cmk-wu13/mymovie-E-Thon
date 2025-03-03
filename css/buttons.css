@@ -1,0 +1,9 @@
+@import url(colors.css);
+
+.btn1 {
+    border: 1px solid light-dark(var(--greyBtn-light-color), var(--greyBtn-dark-color))inset;
+    width: 3.8125rem;
+    height: 1.3125rem;
+    border-radius: 100px;
+}
+

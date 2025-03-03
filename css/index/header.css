@@ -1,0 +1,8 @@
+h1 {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: normal;
+    letter-spacing: 2%;
+    font-size: 1rem;
+    color: light-dark(var(--header-light-color), var(--header-dark-color));
+}

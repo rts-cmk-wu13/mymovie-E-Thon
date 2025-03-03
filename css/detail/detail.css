@@ -1,0 +1,10 @@
+@import url(colors.css);
+
+h1 {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 2%;
+    font-size: 1.25rem;
+    color: light-dark(var(--text-light-color), var(--text-dark-color));
+}

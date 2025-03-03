@@ -1,36 +1,65 @@
 
 :root {
+    color-scheme: light dark;
+
     /* PRIMARY */
-    --primary-color: #dc0a2d;
-
-    /* GENERAL */
-    --bug-color: #A7B723;
-    --dark-color: #75574C;
-
-    /* GREYSCALE */
-    --dark-color: #212121;
-    --medium-color: #666666;
-    --light-color: #E0E0E0;
-    --background-color: #EFEFEF;
-    --white-color: #FFFFFF;
+    --body-color: #F2F2F2;
+    --rating-color: #FFC319;
+    --text-color: #9C9C9C;
+    --border-color: #D8D8D8;
+    --textBtn2-color: #88A4E8;
+    --genreBtn2-color: #DBE3FF;
+    --transparent-color: rgba(255, 255, 255, 0);
+    
+    /* LIGHT MODE */
+    --background-light-color: #FFFFFF;
+    --header-light-color: #110E47;
+    --text-light-color: #000000;
+    --greyBtn-light-color: #AAA9B1;
+    --icons-light-color: #BCBCCD;
+    
+    
+    /* DARKMODE */
+    --background-dark-color: #15141F;
+    --header-dark-color: #DBE3FF;
+    --text-dark-color: #F0EFFA;
+    --greyBtn-dark-color: #E5E4EA;
+    --icons-dark-color: #F0EFFA;
+  
 }
 
 
 body {
-    background: var(--Grayscale-White, #FFF);
+    background: light-dark(var(--background-light-color) , var(--background-dark-color));
 }
 main {
-    background-color: var(--white-color);
+    background: var(--body-color);
 }
-h1, h2, h3, h4 {
-    color: var(--white-color);
+h2, h4 {
+    color: light-dark(var(--header-light-color), var(--header-dark-color));
 }
-body {
-    color: var(--white-color);
+h3, .duration {
+    color: light-dark(var(--text-light-color), var(--text-dark-color));
 }
 p {
-    color: var(--white-color);
+    color: var(--text-color);
+}
+.rating i {
+    color: var(--rating-color);
+}
+.btn1{
+    background-color: var(--transparent-color);
+}
+.btn1 a {
+    color: light-dark(var(--greyBtn-light-color), var(--greyBtn-dark-color));
+}
+.btn2 {
+    color: var(--textBtn2-color);
+    background-color: var(--genreBtn2-color);
 }
 a {
-    color: var(--white-color);
+    color: var(--background-light-color);
+}
+footer i {
+    color: light-dark(var(--icons-light-color), var(--icons-dark-color));
 }
