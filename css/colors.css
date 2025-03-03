@@ -1,0 +1,36 @@
+
+:root {
+    /* PRIMARY */
+    --primary-color: #dc0a2d;
+
+    /* GENERAL */
+    --bug-color: #A7B723;
+    --dark-color: #75574C;
+
+    /* GREYSCALE */
+    --dark-color: #212121;
+    --medium-color: #666666;
+    --light-color: #E0E0E0;
+    --background-color: #EFEFEF;
+    --white-color: #FFFFFF;
+}
+
+
+body {
+    background: var(--Grayscale-White, #FFF);
+}
+main {
+    background-color: var(--white-color);
+}
+h1, h2, h3, h4 {
+    color: var(--white-color);
+}
+body {
+    color: var(--white-color);
+}
+p {
+    color: var(--white-color);
+}
+a {
+    color: var(--white-color);
+}
