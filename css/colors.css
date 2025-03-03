@@ -38,6 +38,11 @@ main {
 h2, h4 {
     color: light-dark(var(--header-light-color), var(--header-dark-color));
 }
+
+.header__burger span {
+    background-color: light-dark(var(--header-light-color), var(--header-dark-color));
+}
+
 h3, .duration {
     color: light-dark(var(--text-light-color), var(--text-dark-color));
 }

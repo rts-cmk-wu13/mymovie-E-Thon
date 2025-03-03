@@ -1,0 +1,11 @@
+.footer__nav {
+    padding: 1.125rem 13.33%;
+}
+.footer__links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__link {
+    max-width: 1.5rem;
+}

@@ -1,3 +1,4 @@
+
 h1 {
     font-family: "Merriweather", serif;
     font-weight: 900;
@@ -5,4 +6,41 @@ h1 {
     letter-spacing: 2%;
     font-size: 1rem;
     color: light-dark(var(--header-light-color), var(--header-dark-color));
+}
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem 6.13% 1.25rem 6.4%;
+}
+.header__menu {
+    max-width: 1.5rem;
+    width: 100%;
+    cursor: pointer;
+}
+.header__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0.25rem;
+    column-gap: 20rem;
+}
+.header__burger span {
+    height: 12.5%;
+    display: block;
+    border-radius: 075px;
+}
+.header__burger span:first-of-type {
+    width: 50%;
+    align-self: end;
+}
+.header__burger span:nth-of-type(2) {
+    width: 100%;
+    align-self: center;
+}
+.header__burger span:last-of-type {
+    width: 50%;
+}
+.header__links {
+    display: none;
 }
