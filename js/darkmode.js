@@ -10,7 +10,7 @@ console.log("Matchmedia is dark", browserDark);
 console.log("LocalStorage is dark", isDarkMode);
 
 let darkState = null;
-let footerImg = document.querySelector(".nav__img--movieicon img");
+let movieIcon = document.querySelector(".nav__img--movieicon img");
 
 //! udgangspunkt for dark/light mode:
 if (isDarkMode == null) {
@@ -22,12 +22,12 @@ if (darkState) {
   switchElm.checked = true; // laver et udgangspunkts i checkboxens afkrydsning (afkrydset), hvis dark mode er på
   rootElm.setAttribute("data-dark", switchElm.checked);
   // sætter data-dark="true", hvis checkboxen er afkrydset
-  footerImg.setAttribute("src", "./img/movieicon-dark.svg")
+  movieIcon.setAttribute("src", "./img/movieicon-dark.svg")
 } else {
   switchElm.checked = false; // laver et udgangspunkts i checkboxens afkrydsning (ikke afkrydset), hvis light mode er på
   rootElm.setAttribute("data-dark", switchElm.checked);
   // sætter data-dark="false", hvis checkboxen ikke er afkrydset
-  footerImg.setAttribute("src", "./img/movieicon-light.svg")
+  movieIcon.setAttribute("src", "./img/movieicon-light.svg")
 }
 
 
@@ -41,13 +41,13 @@ function switchTheme() {
   if (switchElm.checked) {
     rootElm.setAttribute("data-dark", switchElm.checked);
     // sætter data-dark="true el. false" alt efter om checkboxen er afkrydset eller ej
-    footerImg.setAttribute("src", "./img/movieicon-dark.svg")
+    movieIcon.setAttribute("src", "./img/movieicon-dark.svg")
     
   } else {
     rootElm.setAttribute("data-dark", switchElm.checked);
     // gør det samme som ovenfor - skole eksempel
-    footerImg.setAttribute("src", "./img/movieicon-light.svg")
+    movieIcon.setAttribute("src", "./img/movieicon-light.svg")
   }
 }
 
-console.log(footerImg);
+console.log(movieIcon);
