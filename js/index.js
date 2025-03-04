@@ -8,7 +8,7 @@ header.innerHTML = `
             <span></span>
         </div>
         <ul class="header__links">
-            <li class="header__link"><img src="./img/movieicon-light.svg" alt="Movie icon"></li>
+            <li class="header__link nav__img--movieicon"><img src="./img/movieicon-dark.svg" alt="Movie icon"></li>
             <li class="header__link"><i class="fa-solid fa-ticket-simple"></i></li>
             <li class="header__link"><i class="fa-solid fa-bookmark"></i></li>
         </ul>
@@ -25,7 +25,7 @@ let footer = document.querySelector("footer");
 footer.innerHTML = `
 <nav class="footer__nav">
     <ul class="footer__links">
-        <li class="footer__link"><img src="./img/movieicon-light.svg" alt="Movie icon"></li>
+        <li class="footer__link nav__img--movieicon"><img src="./img/movieicon-dark.svg" alt="Movie icon"></li>
         <li class="footer__link"><i class="fa-solid fa-ticket-simple"></i></li>
         <li class="footer__link"><i class="fa-solid fa-bookmark"></i></li>
     </ul>
