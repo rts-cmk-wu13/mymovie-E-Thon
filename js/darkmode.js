@@ -1,38 +1,42 @@
-
 let rootElm = document.documentElement; // document element kører før noget bliver valideret
 let switchElm = document.querySelector("#switch");
 let isDarkMode = readFromLocalStorage("isDarkMode");
 let browserDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-// laves for at vi kan tjekke, hvilken preference brugeren har (dark el. light mode). Retunerer false eller true. 
-// Skal stemme overens med, hvad vi tjekker fra local storage (isDarkMode)
+// laves for at vi kan tjekke, hvilken preference brugeren har (her tjekkes dark mode).
+// .matches retunerer false eller true.
 console.log("Matchmedia is dark", browserDark);
+// Skal stemme overens med, hvad vi tjekker fra local storage (isDarkMode)
+// ... derfor laves darkState
 console.log("LocalStorage is dark", isDarkMode);
 
-
-let darkState = null
-
+let darkState = null;
 
 if (isDarkMode == null) {
-    darkState = browserDark;
+  darkState = browserDark;
 } else {
-    darkState = isDarkMode;
+  darkState = isDarkMode;
 }
-if(darkState){
-    switchElm.checked = true; // laver et udgangspunkts i checkboxens afkrydsning, hvis dark mode er på
-    rootElm.setAttribute("data-dark", switchElm.checked);
+if (darkState) {
+  switchElm.checked = true; // laver et udgangspunkts i checkboxens afkrydsning (afkrydset), hvis dark mode er på
+  rootElm.setAttribute("data-dark", switchElm.checked);
+  // sætter data-dark="true", hvis checkboxen er afkrydset
 } else {
-    switchElm.checked = false; // laver et udgangspunkts i checkboxens afkrydsning, hvis light mode er på
-    rootElm.setAttribute("data-dark", switchElm.checked);
+  switchElm.checked = false; // laver et udgangspunkts i checkboxens afkrydsning (ikke afkrydset), hvis light mode er på
+  rootElm.setAttribute("data-dark", switchElm.checked);
+  // sætter data-dark="false", hvis checkboxen ikke er afkrydset
 }
-
 
 switchElm.addEventListener("change", switchTheme);
-function switchTheme(){
-    saveToLocalStorage("isDarkMode", switchElm.checked);
-    
-    if(switchElm.checked){
-        rootElm.setAttribute("data-dark", switchElm.checked);
-    } else {
-        rootElm.setAttribute("data-dark", switchElm.checked);
-    }
-};
+
+function switchTheme() {
+  saveToLocalStorage("isDarkMode", switchElm.checked);
+  // gemmer i local storage, hvorvidt checkboxen er afkrydset eller ej
+
+  if (switchElm.checked) {
+    rootElm.setAttribute("data-dark", switchElm.checked);
+    // sætter data-dark="true el. false" alt efter om checkboxen er afkrydset eller ej
+  } else {
+    rootElm.setAttribute("data-dark", switchElm.checked);
+    // gør det samme som ovenfor - skole eksempel
+  }
+}

@@ -28,13 +28,14 @@
   
 }
 
-
 body {
+    background-color: var(--body-color);
+}
+
+#root, main {
     background: light-dark(var(--background-light-color) , var(--background-dark-color));
 }
-main {
-    background: var(--body-color);
-}
+
 h2, h4 {
     color: light-dark(var(--header-light-color), var(--header-dark-color));
 }
@@ -67,4 +68,12 @@ a {
 }
 footer i {
     color: light-dark(var(--icons-light-color), var(--icons-dark-color));
+}
+
+/* DATA-DARK (skal med for at darkmode js virker ifht farveskift */
+[data-dark="true"] {
+    color-scheme: dark;
+}
+[data-dark="false"] {
+    color-scheme: light;
 }

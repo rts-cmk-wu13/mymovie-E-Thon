@@ -14,8 +14,9 @@ header.innerHTML = `
         </ul>
     </div>
     <h1>MyMovies</h1>
-    <form action="#" class="header__form" method="post">
+    <form action="#" class="header__switch" method="post">
         <input type="checkbox" id="switch" value="false" name="switch">
+        <span class="slider round"></span>
     </form>
 </nav>
 `;
