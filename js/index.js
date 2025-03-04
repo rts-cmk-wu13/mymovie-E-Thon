@@ -38,7 +38,10 @@ fetch(url, options)
     let sectionElm = document.createElement("section")
     sectionElm.className = "movies"
     sectionElm.innerHTML = `
+    <div class="movies__bar">
     <h2 class="movies__header">Now Showing</h2>
+    <button class="btn1">See more</button>
+    </div>
     `
     let divElm = document.createElement("div")
     divElm.className = "movies__div"
@@ -48,10 +51,12 @@ fetch(url, options)
        
         return `
         <article class="movies__movie" id="">
-            <img src="https://api.themoviedb.org/3/collection/${movie.id}/image" alt="${movie.title} poster">
+            <a href="detail.html?id=${movie.id}">
+            <img src="https://image.tmdb.org/t/p/original/${movie.poster_path}.svg" alt="${movie.title} poster">
             <h3 class="movie__title">${movie.original_title}</h3>
-            <p class="movie__rating"><i class="fa-solid fa-star"></i> ${Math.round(movie.vote_average)}/10 IMDb
+            <p class="movie__rating"><i class="fa-solid fa-star"></i> ${movie.vote_average.toFixed(1)}/10 IMDb
             </p>
+            </a>
         </article>
         `;
     }).join("");

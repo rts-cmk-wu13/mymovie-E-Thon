@@ -70,10 +70,12 @@
 
 /* READ MORE */
 .btn1 {
-    border: 1px solid light-dark(var(--greyBtn-light-color), var(--greyBtn-dark-color))inset;
-    width: 3.8125rem;
-    height: 1.3125rem;
-    border-radius: 100px;
+    border: 1px solid light-dark(var(--greyBtn-light-color), var(--greyBtn-dark-color));
+    width: fit-content;
+    height: fit-content;
+    border-radius: 6.25rem;
+    padding: .2rem .5rem;
+    cursor: pointer;
 }
 
 

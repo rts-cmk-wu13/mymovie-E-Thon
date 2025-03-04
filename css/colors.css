@@ -63,9 +63,9 @@ p {
     color: var(--textBtn2-color);
     background-color: var(--genreBtn2-color);
 }
-a {
+/* a {
     color: var(--background-light-color);
-}
+} */
 footer i {
     color: light-dark(var(--icons-light-color), var(--icons-dark-color));
 }
