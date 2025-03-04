@@ -107,12 +107,12 @@ fetch(urlPop, optionsPop)
       .map((movie) => {
         return `
         <div class="movies2__movie">
-            <a href="detail.html?id=${movie.id}">
+            <a href="detail.html?id=${movie.id}" class="flex1">
                 <img src="https://image.tmdb.org/t/p/original/${
                   movie.poster_path
                 }.svg" alt="${movie.title} poster">
             </a>
-            <article>
+            <article class="flex3">
                 <a href="detail.html?id=${movie.id}">
                     <h3 class="movie__title">${movie.original_title}</h3>
                 </a>
