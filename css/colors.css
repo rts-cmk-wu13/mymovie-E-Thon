@@ -50,7 +50,7 @@ h3, .duration {
 p {
     color: var(--text-color);
 }
-.rating i {
+.movie__rating i {
     color: var(--rating-color);
 }
 .btn1{
