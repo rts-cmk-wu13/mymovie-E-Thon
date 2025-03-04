@@ -1,0 +1,19 @@
+/* SECTION1: NOW PLAYING */ 
+.movies {
+    
+}
+.movies__header {
+    
+}
+.movies__div {
+    display: flex;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    gap: 2rem;
+}
+.movies__div::-webkit-scrollbar {
+    display: none;
+}
+.movies__movie {
+}

@@ -35,13 +35,20 @@ fetch(url, options)
   .then(res => res.json())
   .then(movies => {
     console.log(movies);
-    
     let sectionElm = document.createElement("section")
     sectionElm.className = "movies"
+    sectionElm.innerHTML = `
+    <h2 class="movies__header">Now Showing</h2>
+    `
+    let divElm = document.createElement("div")
+    divElm.className = "movies__div"
+    sectionElm.append(divElm)
 
-    sectionElm.innerHTML = movies.results.map(movie => {
+    divElm.innerHTML = movies.results.map(movie => {
+       
         return `
         <article class="movies__movie" id="">
+            <img src="https://api.themoviedb.org/3/collection/${movie.id}/image" alt="${movie.title} poster">
             <h3 class="movie__title">${movie.original_title}</h3>
             <p class="movie__rating"><i class="fa-solid fa-star"></i> ${Math.round(movie.vote_average)}/10 IMDb
             </p>
@@ -61,9 +68,15 @@ let footer = document.querySelector("footer");
 footer.innerHTML = `
 <nav class="footer__nav">
     <ul class="footer__links">
-        <li class="footer__link"><img class="nav__img--movieicon" src="./img/movieicon-dark.svg" alt="Movie icon"></li>
-        <li class="footer__link"><i class="fa-solid fa-ticket-simple"></i></li>
-        <li class="footer__link"><i class="fa-solid fa-bookmark"></i></li>
+        <li class="footer__link"><a href="#">
+            <img class="nav__img--movieicon" src="./img/movieicon-dark.svg" alt="Movie icon">
+        </a></li>
+        
+        <li class="footer__link"><a href="#"><i class="fa-solid fa-ticket-simple"></i>
+        </a></li>
+        
+        <li class="footer__link"><a href="#"><i class="fa-solid fa-bookmark"></i>
+        </a></li>
     </ul>
 </nav>
 `;

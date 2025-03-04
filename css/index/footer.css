@@ -6,6 +6,12 @@
     justify-content: space-between;
 }
 
-.footer__link {
+.footer__link a i {
     max-width: 1.5rem;
+    width: 100%;
+}
+
+.footer__link i {
+    max-width: 1.5rem;
+    width: 100%;
 }
