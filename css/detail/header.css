@@ -1,5 +1,9 @@
 header {
-    height: 18.75rem;
+    /* til styling: fjernes efter */
+    background-color: pink;
+    /* hertil */
+
+    height: 80%;
 }
 
 .header__nav {

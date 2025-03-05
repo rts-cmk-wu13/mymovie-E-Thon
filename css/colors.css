@@ -50,7 +50,7 @@ h2, h4 {
 h3, .duration {
     color: light-dark(var(--text-light-color), var(--text-dark-color));
 }
-p {
+p, tr:first-of-type {
     color: var(--text-color);
 }
 .movie__rating i {
