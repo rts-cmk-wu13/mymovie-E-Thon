@@ -1,5 +1,11 @@
+.footer {
+    width: 100%;
+}
 .footer__nav {
     padding: 1.125rem 13.33%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 .footer__links {
     display: flex;

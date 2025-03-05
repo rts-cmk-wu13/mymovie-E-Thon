@@ -1,0 +1,17 @@
+header {
+    height: 18.75rem;
+}
+
+.header__nav {
+    padding-left: 6.4%;
+    padding-right: 6.4%;
+    padding-top: 3.875rem;
+}
+.header__div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__div i {
+    font-size: 1rem;
+}

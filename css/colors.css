@@ -21,11 +21,11 @@
     
     /* DARKMODE */
     --background-dark-color: #15141F;
+    --footer-dark-color: #000000;
     --header-dark-color: #DBE3FF;
     --text-dark-color: #F0EFFA;
     --greyBtn-dark-color: #E5E4EA;
     --icons-dark-color: #F0EFFA;
-  
 }
 
 body {
@@ -33,7 +33,10 @@ body {
 }
 
 #root, main {
-    background: light-dark(var(--background-light-color) , var(--background-dark-color));
+    background-color: light-dark(var(--background-light-color) , var(--background-dark-color));
+}
+.footer__nav {
+    background-color: light-dark(var(--background-light-color) , var(--footer-dark-color));
 }
 
 h2, h4 {
@@ -63,9 +66,9 @@ p {
     color: var(--textBtn2-color);
     background-color: var(--genreBtn2-color);
 }
-/* a {
+.header__div a>i {
     color: var(--background-light-color);
-} */
+}
 footer i {
     color: light-dark(var(--icons-light-color), var(--icons-dark-color));
 }

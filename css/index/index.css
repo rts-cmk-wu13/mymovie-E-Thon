@@ -1,3 +1,9 @@
+.movies, .moviesPop {
+    max-width: 87.2%;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .movies__bar {
     display: flex;
     justify-content: space-between;

@@ -58,5 +58,3 @@ function switchTheme() {
     )
   }
 }
-
-console.log(movieIcon);
