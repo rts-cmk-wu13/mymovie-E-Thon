@@ -4,10 +4,11 @@ let isDarkMode = readFromLocalStorage("isDarkMode");
 let browserDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 // laves for at vi kan tjekke, hvilken preference brugeren har (her tjekkes dark mode).
 // .matches retunerer false eller true.
+
 console.log("Matchmedia is dark", browserDark);
 // Skal stemme overens med, hvad vi tjekker fra local storage (isDarkMode)
-// ... derfor laves darkState
 console.log("LocalStorage is dark", isDarkMode);
+// ... derfor laves darkState
 
 let darkState = null;
 let movieIcon = document.querySelectorAll(".nav__img--movieicon");

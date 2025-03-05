@@ -28,6 +28,7 @@
 
 .movies__movie img {
     border-radius: 5px;
+    box-shadow: 1px 6px 5px 0 rgba(0,0,0,0.20);
 }
 /* BAGGRUNDS "BLUR" PÅ POSTER:
 .movies__movie img {
@@ -54,9 +55,26 @@
 
 
 
-.movies2__div {
+.moviesPop {
+    margin-top: .5rem;
 }
 .movies2__movie {
     display: flex;
     gap: 1rem;
+}
+.movies2__movie {
+    padding-bottom: 1rem;
+}
+.movies2__movie img {
+    border-radius: 5px;
+    min-width: 5.3125rem;
+    width: 100%;
+}
+.movie2__title {
+    margin-bottom: .5rem;
+}
+
+.movie__genres{
+    display: flex;
+    gap: .5rem;
 }
