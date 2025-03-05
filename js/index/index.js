@@ -23,7 +23,6 @@ header.innerHTML = `
 
 //! NOW PLAYING:
 nowPlaying()
-
   
 //! POPULAR:
 popular()
