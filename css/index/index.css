@@ -28,7 +28,7 @@
 
 .movies__movie img {
     border-radius: 5px;
-    box-shadow: 1px 6px 5px 0 rgba(0,0,0,0.20);
+    box-shadow: 1px 6px 5px 0 light-dark(rgba(0,0,0,0.20), rgba(68, 67, 67, 0.2));
 }
 /* BAGGRUNDS "BLUR" PÅ POSTER:
 .movies__movie img {
