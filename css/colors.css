@@ -39,7 +39,7 @@ body {
     background-color: light-dark(var(--background-light-color) , var(--footer-dark-color));
 }
 
-h2, h4 {
+h2, figcaption {
     color: light-dark(var(--header-light-color), var(--header-dark-color));
 }
 

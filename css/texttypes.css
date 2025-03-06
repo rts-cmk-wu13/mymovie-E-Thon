@@ -17,7 +17,7 @@ body,
 p,
 a,
 h3,
-h4,
+figcaption,
 .btn2,
 td {
     font-family: "Mulish", sans-serif;
@@ -42,7 +42,7 @@ td:not(:first-child) {
     font-weight: 600;
 }
 
-h4, p, a, td:first-child {
+figcaption, p, a, td:first-child {
     font-weight: 400;
 }
 
@@ -60,7 +60,7 @@ h3 {
     font-size: .875rem;
 }
 
-h4, p, td {
+figcaption, p, td {
     font-size: .75rem;
 }
 
@@ -75,6 +75,6 @@ a {
 
 
 /* LETTER SPACING */
-body, h1, h2, h3, h4, p, a, .btn2, td {
+body, h1, h2, h3, figcaption, p, a, .btn2, td {
     letter-spacing: 2%;
 }

@@ -1,11 +1,4 @@
-/* #root {
-    position: relative;
-}  */
 main {
-    /* til styling: fjernes efter */
-    height: 50%;
-    /* hertil */
-
     position: absolute;
     top: 35%;
     left: 0;
@@ -53,5 +46,17 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0 1rem;
+}
+.movie__actors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+    gap: .8125rem;
+}
+.movie__actors img {
+    border-radius: 5px;
+    margin-bottom: .5rem;
+    height: 4.5rem;
+    object-fit: cover;
+    object-position: 0 30%;
 }
 

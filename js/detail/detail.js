@@ -26,8 +26,10 @@ sectionElm1.className = "movie"
 let sectionElm2 = document.createElement("section")
 sectionElm2.className = "cast"
 
+
 divOuterElm.append(sectionElm1, sectionElm2)
 
+//! SECTION 1
 const url = `https://api.themoviedb.org/3/movie/${id}append_to_response=1&language=en-US`;
 const options = {
     method: "GET",
@@ -41,7 +43,7 @@ const options = {
 fetch(url, options)
 .then((res) => res.json())
 .then((detail) => {
-
+    
     
     // if-else rating ifht. adult boolean:
     function agePG() {
@@ -64,14 +66,14 @@ fetch(url, options)
             : ""
         }
         ${
-          detail.genres[1].name
+            detail.genres[1].name
             ? `<li class="movie__genre"><button class="btn2">${detail.genres[1].name}</button></li>`
             : ""
         }
         ${
-          detail.genres[2].name
-          ? `<li class="movie__genre"><button class="btn2">${detail.genres[2].name}</button></li>`
-          : ""
+            detail.genres[2].name
+            ? `<li class="movie__genre"><button class="btn2">${detail.genres[2].name}</button></li>`
+            : ""
         }
         <!-- ? tjekker om dataen eksisterer, hvis den gør, oprettes <li> hvis ikke, så returneres en tom streng -->
             </ul>
@@ -87,16 +89,16 @@ fetch(url, options)
                         detail.runtime - (detail.runtime / 60).toFixed(0) * 60
                     }min</td>
             ${
-              detail.spoken_languages[0].english_name
-              ? `
-              <td>${detail.spoken_languages[0].english_name}
-              ${detail.spoken_languages
-              .slice(1)
-              .map(
-                (language) => `
+                detail.spoken_languages[0].english_name
+                ? `
+                <td>${detail.spoken_languages[0].english_name}
+                ${detail.spoken_languages
+                .slice(1)
+                .map(
+                    (language) => `
                 <br>${language.english_name}`
                 )
-                  .join("")}
+                .join("")}
                 </td>`
                 : ""
             }
@@ -106,7 +108,7 @@ fetch(url, options)
             </td>
         </tr> 
     </table>
-
+    
     <h2>Description</h2>
     <p>${detail.overview}</p>
     `;
@@ -114,13 +116,41 @@ fetch(url, options)
 })
 .catch((err) => console.error(err));
 
-sectionElm2.innerHTML = `
+//! SECTION 2 (CAST)
+const urlCast = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
+const optionsCast = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzZkMjA0YzQ5NTkwMWY4ZDcwMWU1MDRiODdmZDM2YyIsIm5iZiI6MTc0MDk4Njc0MC4zMDQsInN1YiI6IjY3YzU1OTc0Y2NmYzc0OWFmMjkxZjBmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XzCF9nv3KxofSgdCfmo_5ZQmrHjGYWwy3a0Pnjgx17c'
+    }
+};
 
-        <div class="movie__bar">
-            <h2 class="movie__header">Cast</h2>
-            <button class="btn1">See more</button>
-        </div>
-        <div class="movie__actors">
-            something
-        </div>
-        `
+fetch(urlCast, optionsCast)
+.then(res => res.json())
+.then(cast =>  {
+    
+    sectionElm2.innerHTML = `
+            <div class="movie__bar">
+                <h2 class="movie__header">Cast</h2>
+                <button class="btn1 seemore">See more</button>
+            </div>
+            `
+            let divElmCast = document.createElement("div")
+            divElmCast.className = "movie__actors"
+
+            divElmCast.innerHTML = cast.cast.map(actor => {
+                return ` 
+                <figure>
+                    <img src="https://image.tmdb.org/t/p/original/${
+                  actor.profile_path
+                }" alt="${actor.name}">
+                    <figcaption>${actor.name}</figcaption>
+            </figure>
+                `
+            }).join("");
+            sectionElm2.appendChild(divElmCast)
+
+            seeMore();
+            
+        }).catch(err => console.error(err));
