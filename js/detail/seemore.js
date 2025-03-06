@@ -1,5 +1,5 @@
 function seeMore() {
-  const gridContainer = document.querySelector(".movie__actors");
+  const gridContainer = document.querySelector(".cast__actors");
 
   // array på alle child elementer i movie__actors grid elementet:
   const gridItems = Array.from(gridContainer.children);
@@ -23,7 +23,7 @@ function seeMore() {
     }
   });
 
-  let seeMoreBtn = document.querySelector(".seemore");
+  let seeMoreBtn = document.querySelector(".cast__seemore");
   let clicked = false; // Tilstand: viser mere eller ej
 
   seeMoreBtn.addEventListener("click", showHide);
