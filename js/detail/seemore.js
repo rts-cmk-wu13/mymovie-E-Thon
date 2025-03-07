@@ -12,9 +12,6 @@ function seeMore() {
     // rundes ned, fordi elementerne hopper ned på næste række, hvis ikke der er plads til dem 
   );
 
-
-  // console.log(columnCount);
-
   // For at skjule alle andre rækker end første i grid:
   gridItems.forEach((item, index) => {
     if (index >= columnCount) {

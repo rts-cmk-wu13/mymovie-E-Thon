@@ -24,6 +24,7 @@ h1 {
     height: 100%;
     padding: 0.25rem;
     column-gap: 20rem;
+    z-index: 10;
 }
 .header__burger span {
     height: 12.5%;
@@ -43,4 +44,9 @@ h1 {
 }
 .header__links {
     display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
 }
