@@ -12,6 +12,7 @@ function header() {
   fetch(urlMovie, optionsMovie)
     .then((res) => res.json())
     .then((movie) => {
+      
       let header = document.querySelector("header");
       header.innerHTML = `
         <nav class="header__nav">
