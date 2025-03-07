@@ -35,7 +35,7 @@ body {
 #root, main {
     background-color: light-dark(var(--background-light-color) , var(--background-dark-color));
 }
-.footer__nav {
+.footer__nav, .header__links {
     background-color: light-dark(var(--background-light-color) , var(--footer-dark-color));
 }
 
