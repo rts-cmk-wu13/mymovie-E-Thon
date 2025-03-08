@@ -21,9 +21,11 @@ header.innerHTML = `
 </nav>
 `;
 
+initDarkMode();
+
 //! NOW PLAYING:
 nowPlaying()
-  
+
 //! POPULAR:
 popular()
 

@@ -12,7 +12,6 @@ function header() {
   fetch(urlMovie, optionsMovie)
     .then((res) => res.json())
     .then((movie) => {
-      
       let header = document.querySelector("header");
       header.innerHTML = `
         <nav class="header__nav">
@@ -28,6 +27,7 @@ function header() {
             </div>
         </nav>
 `;
+initDarkMode();
     })
     .catch((err) => console.error(err));
 }
