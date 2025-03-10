@@ -1,6 +1,3 @@
-// ${(detail.runtime / 60).toFixed(0)}h ${detail.runtime - (detail.runtime / 60).toFixed(0) * 60}min
-// koden til runtime fra detail side - find ud af, hvordan man fetcher den og indsætter i popular
-
 function popular() {
   const optionsPop = {
     method: "GET",
@@ -10,22 +7,6 @@ function popular() {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzZkMjA0YzQ5NTkwMWY4ZDcwMWU1MDRiODdmZDM2YyIsIm5iZiI6MTc0MDk4Njc0MC4zMDQsInN1YiI6IjY3YzU1OTc0Y2NmYzc0OWFmMjkxZjBmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XzCF9nv3KxofSgdCfmo_5ZQmrHjGYWwy3a0Pnjgx17c",
     },
   };
-
-  // //! Fetch af genre:
-  // let genreMap = {}; // til at gemme genrene fra id til navne
-
-  // fetch(
-  //   "https://api.themoviedb.org/3/genre/movie/list?language=en-US",
-  //   optionsPop
-  // )
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     data.genres.forEach((genre) => {
-  //       genreMap[genre.id] = genre.name;
-  //     });
-  //     fetchMoviesPop(1);
-  //   })
-  //   .catch((err) => console.error("Fejl ved hentning af genrer:", err));
 
   //! FETCH AF DATA FRA DETAIL:
   function fetchData(url, mapObject, dataKey, isSingleValue, callback) {
@@ -154,7 +135,9 @@ function popular() {
                       </ul>
                       <p class="movie__duration duration">
                         <i class="fa-solid fa-clock"></i>
-                        ${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}min
+                        ${Math.floor(movie.runtime / 60)}h ${
+                  movie.runtime % 60
+                }min
                       </p>
                   </article>   
               </div>
@@ -162,7 +145,7 @@ function popular() {
               })
               .join("");
 
-            // movies being observed
+            //! movies being observed
             let observedMovie = divElm2.querySelector(
               ".movies2__movie:last-of-type"
             );

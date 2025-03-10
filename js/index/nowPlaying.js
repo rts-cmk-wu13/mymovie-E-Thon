@@ -8,7 +8,7 @@ function nowPlaying() {
     },
   };
 
-  // PAGES COUNT:
+  //! PAGES COUNT:
   let pagesNow = 1;
   fetch(
     `https://api.themoviedb.org/3/movie/now_playing?language=en-US`,
@@ -21,7 +21,7 @@ function nowPlaying() {
       pagesNow = movies.total_pages;
     });
 
-  // OBSERVER CREATED:
+  //! OBSERVER CREATED:
   let currentOffsetNow = 1;
   const observerNow = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -36,7 +36,7 @@ function nowPlaying() {
     });
   });
 
-  // CONTENT:
+  //! CONTENT:
   let sectionElm = document.createElement("section");
   sectionElm.className = "movies";
   sectionElm.innerHTML = `
@@ -76,7 +76,7 @@ function nowPlaying() {
           })
           .join("");
 
-        // movies being observed:
+        //! movies being observed:
         let observedMovie = divElm.querySelector(".movies__movie:last-of-type");
         observerNow.observe(observedMovie);
       })
