@@ -1,3 +1,6 @@
+// ${(detail.runtime / 60).toFixed(0)}h ${detail.runtime - (detail.runtime / 60).toFixed(0) * 60}min
+// koden til runtime fra detail side - find ud af, hvordan man fetcher den og indsætter i popular
+
 function popular() {
   const optionsPop = {
     method: "GET",
@@ -8,7 +11,64 @@ function popular() {
     },
   };
 
-  // PAGES COUNT:
+  // //! Fetch af genre:
+  // let genreMap = {}; // til at gemme genrene fra id til navne
+
+  // fetch(
+  //   "https://api.themoviedb.org/3/genre/movie/list?language=en-US",
+  //   optionsPop
+  // )
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     data.genres.forEach((genre) => {
+  //       genreMap[genre.id] = genre.name;
+  //     });
+  //     fetchMoviesPop(1);
+  //   })
+  //   .catch((err) => console.error("Fejl ved hentning af genrer:", err));
+
+  //! FETCH AF DATA FRA DETAIL:
+  function fetchData(url, mapObject, dataKey, isSingleValue, callback) {
+    fetch(url, optionsPop)
+      .then((res) => res.json())
+      .then((data) => {
+        if (isSingleValue) {
+          // Hvis det er en enkelt værdi (som runtime)
+          mapObject[data.id] = data[dataKey];
+        } else {
+          // Hvis det er en liste (som genres)
+          data[dataKey].forEach((item) => {
+            mapObject[item.id] = item.name;
+          });
+        }
+        if (callback) callback();
+      })
+      .catch((err) => console.error(`Fejl ved hentning af ${dataKey}:`, err));
+  }
+
+  //! GENRE:
+  let genreMap = {}; // Objekt til at gemme genrer fra id til navn
+
+  // Hent genrer
+  fetchData(
+    "https://api.themoviedb.org/3/genre/movie/list?language=en-US",
+    genreMap,
+    "genres",
+    false,
+    () => {
+      fetchMoviesPop(1);
+    }
+  );
+
+  //!RUNTIME:
+  let runtimeMap = {}; // Objekt til at gemme runtime fra movieId til runtime
+
+  function fetchMovieRuntime(movieId) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+    fetchData(url, runtimeMap, "runtime", true, () => {});
+  }
+
+  //! PAGES COUNT:
   let pages = 1;
   fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US`, optionsPop)
     .then(function (response) {
@@ -18,7 +78,7 @@ function popular() {
       pages = movies.total_pages;
     });
 
-  // OBSERVER CREATED:
+  //! OBSERVER CREATED:
   let currentOffsetPop = 1;
   const observerPop = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -52,9 +112,22 @@ function popular() {
     fetch(urlPop, optionsPop)
       .then((res) => res.json())
       .then((movies) => {
-        divElm2.innerHTML += movies.results
-          .map((movie) => {
-            return `
+        // Hent alle filmdata og deres runtime samtidig
+        const moviePromises = movies.results.map((movie) => {
+          return fetchMovieRuntime(movie.id).then((runtime) => {
+            return {
+              ...movie,
+              runtime: runtime,
+            };
+          });
+        });
+
+        // Vent på, at alle filmdata + runtime er hentet
+        Promise.all(moviePromises)
+          .then((moviesWithRuntime) => {
+            divElm2.innerHTML += moviesWithRuntime
+              .map((movie) => {
+                return `
               <div class="movies2__movie">
                   <a href="detail.html?id=${movie.id}" class="flex1">
                       <img src="https://image.tmdb.org/t/p/original/${
@@ -68,40 +141,36 @@ function popular() {
                       
                       <p class="movie__rating"><i class="fa-solid fa-star"></i> ${movie.vote_average.toFixed(
                         1
-                      )}/10 IMDb
-                      </p>
+                      )}/10 IMDb</p>
       
                       <ul class="movie__genres">
-                          ${
-                            movie.genre_ids[0]
-                              ? `<li class="movie__genre"><button class="btn2">${movie.genre_ids[0]}</button></li>`
-                              : ""
-                          }
-                          ${
-                            movie.genre_ids[1]
-                              ? `<li class="movie__genre"><button class="btn2">${movie.genre_ids[1]}</button></li>`
-                              : ""
-                          }
-                          ${
-                            movie.genre_ids[2]
-                              ? `<li class="movie__genre"><button class="btn2">${movie.genre_ids[2]}</button></li>`
-                              : ""
-                          }
-                          <!-- ? tjekker om dataen eksisterer, hvis den gør, oprettes <li> hvis ikke, så returneres en tom streng -->
+                          ${movie.genre_ids
+                            .map((id) => {
+                              return genreMap[id]
+                                ? `<li class="movie__genre"><button class="btn2">${genreMap[id]}</button></li>`
+                                : "";
+                            })
+                            .join("")}
                       </ul>
-                      <p class="movie__duration duration"><i class="fa-solid fa-clock"></i>
+                      <p class="movie__duration duration">
+                        <i class="fa-solid fa-clock"></i>
+                        ${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}min
                       </p>
                   </article>   
               </div>
-              `;
-          })
-          .join("");
+            `;
+              })
+              .join("");
 
-        // movies being observed:
-        let observedMovie = divElm2.querySelector(
-          ".movies2__movie:last-of-type"
-        );
-        observerPop.observe(observedMovie);
+            // movies being observed
+            let observedMovie = divElm2.querySelector(
+              ".movies2__movie:last-of-type"
+            );
+            observerPop.observe(observedMovie);
+          })
+          .catch((err) => {
+            console.error("Fejl ved hentning af film med runtime:", err);
+          });
       })
       .catch((err) => {
         alert("The movie is not available");
@@ -109,5 +178,15 @@ function popular() {
       });
   }
 
+  function fetchMovieRuntime(movieId) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+    return fetch(url, optionsPop)
+      .then((res) => res.json())
+      .then((data) => data.runtime) // Returner kun runtime
+      .catch((err) => {
+        console.error(`Fejl ved hentning af runtime for film ${movieId}:`, err);
+        return 0; // Returner 0, hvis der opstår en fejl
+      });
+  }
   fetchMoviesPop(currentOffsetPop);
 }

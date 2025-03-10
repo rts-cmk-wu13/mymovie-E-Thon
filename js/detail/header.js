@@ -16,7 +16,7 @@ function header() {
       header.innerHTML = `
         <nav class="header__nav">
             <div class="header_trailer">
-                <iframe src="https://www.youtube.com/embed/${movie.results[0]?.key}" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" frameborder="0"></iframe>
+                <!-- <iframe src="https://www.youtube.com/embed/${movie.results[0]?.key}" allowfullscreen></iframe> -->
             </div>
             <div class="header__div">
                 <a href="index.html"><i class="fa-solid fa-arrow-left-long"></i></a>

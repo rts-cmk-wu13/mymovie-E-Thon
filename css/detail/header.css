@@ -8,7 +8,7 @@ header {
     height: 100%;
 }
 
-.header__trailer {
+/* .header__trailer {
     position: absolute;
     top: 0;
     left: 0;
@@ -26,7 +26,7 @@ header {
     height: 100%;
     border: none;
     object-fit: cover;
-}
+} */
 
 .header__div {
     position: absolute;

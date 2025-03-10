@@ -10,6 +10,7 @@ function seeMore() {
     // offsetWidth: synlige bredde af en kontainer (her mit grid)
     // divideres med første bredden på første element i arrayet = ca. hvor mange der er i rækken
     // rundes ned, fordi elementerne hopper ned på næste række, hvis ikke der er plads til dem 
+    // virker ikke på for brede skærme pga. gap
   );
 
   // For at skjule alle andre rækker end første i grid:

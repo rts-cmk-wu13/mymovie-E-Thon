@@ -54,9 +54,7 @@ fetch(url, options)
                     <td>Rating</td>
                 </tr>
                 <tr>
-                    <td>${(detail.runtime / 60).toFixed(0)}h ${
-                        detail.runtime - (detail.runtime / 60).toFixed(0) * 60
-                    }min</td>
+                    <td>${Math.floor(detail.runtime / 60)}h ${detail.runtime % 60}min</td>
             ${
                 detail.spoken_languages[0].english_name
                 ? `
