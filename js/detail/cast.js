@@ -22,11 +22,19 @@ fetch(urlCast, optionsCast)
             divElmCast.className = "cast__actors"
 
             divElmCast.innerHTML = cast.cast.map(actor => {
+
+                //! billedsti:
+                let imageUrl;
+
+                if (actor.profile_path) {
+                    imageUrl = `https://image.tmdb.org/t/p/original/${actor.profile_path}`;
+                } else {
+                    imageUrl = 'https://placehold.co/300/transparent/000?text=N/A';
+                }                
+
                 return ` 
                 <figure>
-                    <img src="https://image.tmdb.org/t/p/original/${
-                  actor.profile_path
-                }" alt="${actor.name}">
+                    <img src="${imageUrl}" alt="${actor.name}">
                     <figcaption>${actor.name}</figcaption>
             </figure>
                 `

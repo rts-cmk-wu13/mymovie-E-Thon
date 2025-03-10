@@ -10,7 +10,7 @@ function initDarkMode() {
   // Skal stemme overens med, hvad vi tjekker fra local storage (isDarkMode)
   console.log("LocalStorage is dark", isDarkMode);
   // ... derfor laves darkState
-  console.log(switchElm);
+
   let darkState = null;
   let movieIcon = document.querySelectorAll(".nav__img--movieicon");
 
