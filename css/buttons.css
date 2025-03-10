@@ -38,7 +38,7 @@
     width: 1.13rem;
     left: .09375rem;
     bottom: .09375rem;
-    background-color: var(--background-light-color);
+    background-color: light-dark(var(--background-light-color), var(--background-dark-color));
     -webkit-transition: .4s;
     transition: .4s;
   }

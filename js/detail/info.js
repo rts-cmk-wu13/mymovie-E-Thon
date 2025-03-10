@@ -55,6 +55,7 @@ fetch(url, options)
                 </tr>
                 <tr>
                     <td>${Math.floor(detail.runtime / 60)}h ${detail.runtime % 60}min</td>
+                    <!--  "% 60" deler med 60 og trækker disse fra for dermed at returnere det resterende tal (fx: tal/60 = antal => resulatet = tal-(antal*60)) -->
             ${
                 detail.spoken_languages[0].english_name
                 ? `
