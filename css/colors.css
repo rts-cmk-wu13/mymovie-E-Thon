@@ -84,5 +84,6 @@ footer i {
 
 
 .ytp-large-play-button {
-    
+    color: blue;
+    background-color: pink;
 }
