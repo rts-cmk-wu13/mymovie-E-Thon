@@ -16,7 +16,10 @@ function popular(movies) {
         }
         if (callback) callback();
       })
-      .catch((err) => console.error(`Fejl ved hentning af ${dataKey}:`, err));
+      .catch((err) => {
+        alert("The movie is not available");
+        console.error(err)
+      });
   }
 
   //! GENRE:
@@ -29,6 +32,7 @@ function popular(movies) {
     "genres",
     false,
     () => {
+      // kalder funktionen på side 1
       fetchMoviesPop(1);
     }
   );
@@ -42,15 +46,8 @@ function popular(movies) {
   }
 
   //! PAGES COUNT:
-  let pages = 1;
-  fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US`, optionsList)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (movies) {
-      pages = movies.total_pages;
-    });
-
+  let pages = movies.total_pages;
+  
   //! OBSERVER CREATED:
   let currentOffsetPop = 1;
   const observerPop = new IntersectionObserver(function (entries) {
@@ -66,6 +63,7 @@ function popular(movies) {
     });
   });
 
+  //! CONTENT:
   let sectionElm2 = document.createElement("section");
   sectionElm2.className = "moviesPop";
   sectionElm2.innerHTML = `
@@ -153,13 +151,15 @@ function popular(movies) {
       });
   }
 
+  //! Rutime function
   function fetchMovieRuntime(movieId) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
     return fetch(url, optionsList)
       .then((res) => res.json())
       .then((data) => data.runtime) // Returner kun runtime
       .catch((err) => {
-        console.error(`Fejl ved hentning af runtime for film ${movieId}:`, err);
+        alert("Runtime is not available");
+        console.error(err);
         return 0; // Returner 0, hvis der opstår en fejl
       });
   }
