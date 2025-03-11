@@ -1,26 +1,8 @@
-function nowPlaying() {
-  const optionsNow = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzZkMjA0YzQ5NTkwMWY4ZDcwMWU1MDRiODdmZDM2YyIsIm5iZiI6MTc0MDk4Njc0MC4zMDQsInN1YiI6IjY3YzU1OTc0Y2NmYzc0OWFmMjkxZjBmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XzCF9nv3KxofSgdCfmo_5ZQmrHjGYWwy3a0Pnjgx17c",
-    },
-  };
-
+function nowPlaying(movies) {
   //! PAGES COUNT:
   let pagesNow = 1;
-  fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?language=en-US`,
-    optionsNow
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (movies) {
-      pagesNow = movies.total_pages;
-    });
-
+  pagesNow = movies.now_playing.total_pages;
+  
   //! OBSERVER CREATED:
   let currentOffsetNow = 1;
   const observerNow = new IntersectionObserver(function (entries) {
@@ -52,11 +34,10 @@ function nowPlaying() {
   sectionElm.append(divElm);
 
   function fetchMoviesNow(offset) {
-    const urlNow = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${offset}`;
-    fetch(urlNow, optionsNow)
+    fetch(urlList, optionsList)
       .then((res) => res.json())
       .then((movies) => {
-        divElm.innerHTML += movies.results
+        divElm.innerHTML += movies.now_playing.results
           .map((movie) => {
             return `
         <article class="movies__movie">
@@ -80,10 +61,7 @@ function nowPlaying() {
         let observedMovie = divElm.querySelector(".movies__movie:last-of-type");
         observerNow.observe(observedMovie);
       })
-      .catch((err) => {
-        alert("The movie is not available");
-        console.error(err);
-      });
+      
   }
   fetchMoviesNow(currentOffsetNow);
 }
