@@ -1,17 +1,6 @@
 function nowPlaying(movies) {
   //! PAGES COUNT:
-  let pagesNow = 1;
-
-  fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?language=en-US`,
-    optionsList
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (movies) {
-      pagesNow = movies.total_pages;
-    });
+  let pagesNow = movies.total_pages;
 
   //! OBSERVER CREATED:
   let currentOffsetNow = 1;
