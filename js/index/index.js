@@ -1,4 +1,4 @@
-const urlList = `https://api.themoviedb.org/3/movie/now_playing?append_to_response=popular&language=en-US&page=${offset}`;
+const urlList = `https://api.themoviedb.org/3/movie/now_playing?append_to_response=popular&language=en-US&page=1`;
 const optionsList = {
   method: "GET",
   headers: {
@@ -11,8 +11,6 @@ const optionsList = {
 fetch(urlList, optionsList)
   .then((res) => res.json())
   .then((movies) => {
-    console.log(movies);
-    
     //! HEADER:
     let header = document.querySelector("header");
     header.innerHTML = `
@@ -36,7 +34,7 @@ fetch(urlList, optionsList)
     </form>
 </nav>
 `;
-
+    burger();
     initDarkMode();
 
     //! NOW PLAYING:

@@ -1,8 +1,18 @@
 function nowPlaying(movies) {
   //! PAGES COUNT:
   let pagesNow = 1;
-  pagesNow = movies.now_playing.total_pages;
-  
+
+  fetch(
+    `https://api.themoviedb.org/3/movie/now_playing?language=en-US`,
+    optionsList
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (movies) {
+      pagesNow = movies.total_pages;
+    });
+
   //! OBSERVER CREATED:
   let currentOffsetNow = 1;
   const observerNow = new IntersectionObserver(function (entries) {
@@ -34,7 +44,11 @@ function nowPlaying(movies) {
   sectionElm.append(divElm);
 
   function fetchMoviesNow(offset) {
-        divElm.innerHTML += movies.now_playing.results
+    const urlNow = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${offset}`;
+    fetch(urlNow, optionsList)
+      .then((res) => res.json())
+      .then((movies) => {
+        divElm.innerHTML += movies.results
           .map((movie) => {
             return `
         <article class="movies__movie">
@@ -51,12 +65,17 @@ function nowPlaying(movies) {
             
         </article>
         `;
-          }).join("");
+          })
+          .join("");
 
         //! movies being observed:
         let observedMovie = divElm.querySelector(".movies__movie:last-of-type");
         observerNow.observe(observedMovie);
-      
+      })
+      .catch((err) => {
+        alert("The movie is not available");
+        console.error(err);
+      });
   }
   fetchMoviesNow(currentOffsetNow);
 }

@@ -1,3 +1,4 @@
+function burger() {
 const menu = document.querySelector(".header__links");
 const burger = document.querySelector(".header__burger");
 const upperBar = document.querySelector(".header__burger span:first-of-type")
@@ -25,5 +26,6 @@ function toggleMenu() {
     upperBar.style.rotate = "0deg"
     middleBar.style.rotate = "0deg"
     lowerBar.style.rotate = "0deg"
+}
 }
 }
