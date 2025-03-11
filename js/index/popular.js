@@ -1,16 +1,8 @@
-function popular() {
-  const optionsPop = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzZkMjA0YzQ5NTkwMWY4ZDcwMWU1MDRiODdmZDM2YyIsIm5iZiI6MTc0MDk4Njc0MC4zMDQsInN1YiI6IjY3YzU1OTc0Y2NmYzc0OWFmMjkxZjBmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XzCF9nv3KxofSgdCfmo_5ZQmrHjGYWwy3a0Pnjgx17c",
-    },
-  };
+function popular(movies) {
 
   //! FETCH AF DATA FRA DETAIL:
   function fetchData(url, mapObject, dataKey, isSingleValue, callback) {
-    fetch(url, optionsPop)
+    fetch(url, optionsList)
       .then((res) => res.json())
       .then((data) => {
         if (isSingleValue) {
@@ -51,7 +43,7 @@ function popular() {
 
   //! PAGES COUNT:
   let pages = 1;
-  fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US`, optionsPop)
+  fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US`, optionsList)
     .then(function (response) {
       return response.json();
     })
@@ -90,7 +82,7 @@ function popular() {
 
   function fetchMoviesPop(offset) {
     const urlPop = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${offset}`;
-    fetch(urlPop, optionsPop)
+    fetch(urlPop, optionsList)
       .then((res) => res.json())
       .then((movies) => {
         // Hent alle filmdata og deres runtime samtidig
@@ -163,7 +155,7 @@ function popular() {
 
   function fetchMovieRuntime(movieId) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
-    return fetch(url, optionsPop)
+    return fetch(url, optionsList)
       .then((res) => res.json())
       .then((data) => data.runtime) // Returner kun runtime
       .catch((err) => {

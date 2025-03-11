@@ -1,18 +1,10 @@
-function nowPlaying() {
-  const optionsNow = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzZkMjA0YzQ5NTkwMWY4ZDcwMWU1MDRiODdmZDM2YyIsIm5iZiI6MTc0MDk4Njc0MC4zMDQsInN1YiI6IjY3YzU1OTc0Y2NmYzc0OWFmMjkxZjBmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XzCF9nv3KxofSgdCfmo_5ZQmrHjGYWwy3a0Pnjgx17c",
-    },
-  };
-
+function nowPlaying(movies) {
   //! PAGES COUNT:
   let pagesNow = 1;
+
   fetch(
     `https://api.themoviedb.org/3/movie/now_playing?language=en-US`,
-    optionsNow
+    optionsList
   )
     .then(function (response) {
       return response.json();
@@ -53,7 +45,7 @@ function nowPlaying() {
 
   function fetchMoviesNow(offset) {
     const urlNow = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${offset}`;
-    fetch(urlNow, optionsNow)
+    fetch(urlNow, optionsList)
       .then((res) => res.json())
       .then((movies) => {
         divElm.innerHTML += movies.results
