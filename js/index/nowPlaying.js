@@ -34,9 +34,6 @@ function nowPlaying(movies) {
   sectionElm.append(divElm);
 
   function fetchMoviesNow(offset) {
-    fetch(urlList, optionsList)
-      .then((res) => res.json())
-      .then((movies) => {
         divElm.innerHTML += movies.now_playing.results
           .map((movie) => {
             return `
@@ -54,13 +51,11 @@ function nowPlaying(movies) {
             
         </article>
         `;
-          })
-          .join("");
+          }).join("");
 
         //! movies being observed:
         let observedMovie = divElm.querySelector(".movies__movie:last-of-type");
         observerNow.observe(observedMovie);
-      })
       
   }
   fetchMoviesNow(currentOffsetNow);
