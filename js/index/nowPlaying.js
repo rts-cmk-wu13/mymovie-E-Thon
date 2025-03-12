@@ -37,14 +37,25 @@ function nowPlaying(movies) {
     fetch(urlNow, optionsList)
       .then((res) => res.json())
       .then((movies) => {
+
+        
         divElm.innerHTML += movies.results
-          .map((movie) => {
+        .map((movie) => {
+            // billedsti:
+            let imageUrl;
+        
+            if (movie.poster_path) {
+                imageUrl = `https://image.tmdb.org/t/p/original/${
+                  movie.poster_path
+                }`;
+            } else {
+                imageUrl = 'https://placehold.co/300x450/transparent/000?text=N/A';
+            } 
+
             return `
         <article class="movies__movie">
             <a href="detail.html?id=${movie.id}">
-                <img src="https://image.tmdb.org/t/p/original/${
-                  movie.poster_path
-                }" alt="${movie.title} poster">
+                <img src="${imageUrl}" alt="${movie.title} poster">
                 <h3 class="movie__title">${movie.original_title}</h3>
             </a>
             <p class="movie__rating"><i class="fa-solid fa-star"></i> ${movie.vote_average.toFixed(

@@ -98,12 +98,20 @@ function popular(movies) {
           .then((moviesWithRuntime) => {
             divElm2.innerHTML += moviesWithRuntime
               .map((movie) => {
+                // billedsti:
+            let imageUrl;
+        
+            if (movie.poster_path) {
+                imageUrl = `https://image.tmdb.org/t/p/original/${
+                  movie.poster_path
+                }`;
+            } else {
+                imageUrl = 'https://placehold.co/300x450/transparent/000?text=N/A';
+            } 
                 return `
               <div class="movies2__movie">
                   <a href="detail.html?id=${movie.id}" class="flex1">
-                      <img src="https://image.tmdb.org/t/p/original/${
-                        movie.poster_path
-                      }" alt="${movie.title} poster">
+                      <img src="${imageUrl}" alt="${movie.title} poster">
                   </a>
                   <article class="flex3">
                       <a href="detail.html?id=${movie.id}">

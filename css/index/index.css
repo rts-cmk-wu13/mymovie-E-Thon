@@ -30,6 +30,7 @@
 .movies__movie {
     width: 8.9375rem;
     flex-shrink: 0;
+    height: auto;
 }
 
 .movies__movie img {
@@ -70,6 +71,7 @@
 }
 .movies2__movie {
     padding-bottom: 1rem;
+    height: auto;
 }
 .movies2__movie img {
     border-radius: 5px;
