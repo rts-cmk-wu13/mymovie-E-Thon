@@ -1,16 +1,22 @@
 function popular(movies) {
   //! FETCH AF DATA FRA DETAIL:
   function fetchData(url, mapObject, key) {
+    // URL; API-URL der skal hentes data fra
+    // mapObject; object, hvor data gemmes
+    // key; API'ens data vi vil gemme
     return fetch(url, optionsList)
       .then((res) => res.json())
+      // laver svaret til JSON format (bliver JavaScript objekt)
       .then((data) => {
         if (Array.isArray(data[key])) {
-          data[key].forEach((item) => (mapObject[item.id] = item.name));
+          // hvis data[key] er et array, så køres forEach:
+          data[key].forEach(item => 
+            mapObject[item.id] = item.name);
         } else {
           mapObject[data.id] = data[key];
         }
       })
-      .catch((err) => {
+      .catch(err => {
         alert("The movie is not available");
         console.error(err);
       });

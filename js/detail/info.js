@@ -2,11 +2,15 @@ function info(movie) {
         //! PG rating:
         const usPg = movie.release_dates.results.find(pg => pg.iso_3166_1 === "US");
         let pgRating = "N/A"; // hvis ikke der findes en rating; N/A
-
-        if (usPg && usPg.release_dates.length > 0) {
+        
+        if (usPg && usPg.release_dates.length > 0 || !usPg) {
             pgRating = usPg.release_dates[0].certification;
+        } if (pgRating === "") {
+            pgRating = "N/A"; // hvis ikke der findes en rating; N/A
         }
 
+        console.log(pgRating);
+        
         //! CONTENT:
       sectionElm1.innerHTML = `
         <h1>${movie.original_title}</h1>
