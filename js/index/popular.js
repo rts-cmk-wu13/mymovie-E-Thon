@@ -1,8 +1,7 @@
 function popular(movies) {
-
   //! FETCH AF DATA FRA DETAIL:
-  function fetchData(url, mapObject, key, callback) {
-    fetch(url, optionsList)
+  function fetchData(url, mapObject, key) {
+    return fetch(url, optionsList)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data[key])) {
@@ -10,56 +9,41 @@ function popular(movies) {
         } else {
           mapObject[data.id] = data[key];
         }
-        callback?.();
       })
       .catch((err) => {
         alert("The movie is not available");
-        console.error(err)
+        console.error(err);
       });
   }
 
   //! GENRE:
   let genreMap = {}; // Objekt til at gemme genrer fra id til navn
 
-  // Hent genrer
-  fetchData(
-    "https://api.themoviedb.org/3/genre/movie/list?language=en-US",
-    genreMap,
-    "genres",
-    () => {
-      // kalder funktionen på side 1
-      fetchMoviesPop(1);
-    }
-  );
+  // Hent genrer og start film-fetch
+  fetchData("https://api.themoviedb.org/3/genre/movie/list?language=en-US", genreMap, "genres")
+    .then(() => fetchMoviesPop(1));
 
-  //!RUNTIME:
+  //! RUNTIME:
   let runtimeMap = {}; // Objekt til at gemme runtime fra movieId til runtime
 
   function fetchMovieRuntime(movieId) {
-    return new Promise((resolve) => {
-      if (runtimeMap[movieId] !== undefined) {
-        resolve(runtimeMap[movieId]);
-      } else {
-        fetchData(
-          `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
-          runtimeMap,
-          "runtime",
-          () => resolve(runtimeMap[movieId] || 0) // Returnér 0 hvis runtime ikke findes
-        );
-      }
-    });
+    if (runtimeMap[movieId] !== undefined) {
+      return Promise.resolve(runtimeMap[movieId]); // Returnér direkte, hvis vi allerede har det
+    }
+    return fetchData(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, runtimeMap, "runtime")
+      .then(() => runtimeMap[movieId] || 0); // Returnér runtime eller 0 ved fejl
   }
 
   //! PAGES COUNT:
   let pages = movies.total_pages;
-  
+
   //! OBSERVER CREATED:
   let currentOffsetPop = 1;
   const observerPop = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         currentOffsetPop++;
-        if (currentOffsetPop < pages) {
+        if (currentOffsetPop <= pages) { // Skiftet fra < til <=
           fetchMoviesPop(currentOffsetPop);
         } else {
           console.log("There are no more movies for now");
@@ -73,7 +57,7 @@ function popular(movies) {
   sectionElm2.className = "moviesPop";
   sectionElm2.innerHTML = `
         <div class="movies__bar">
-            <h2 class="movies__header">Popuar</h2>
+            <h2 class="movies__header">Popular</h2>
             <button class="btn1">See more</button>
         </div>
         `;
@@ -88,32 +72,28 @@ function popular(movies) {
     fetch(urlPop, optionsList)
       .then((res) => res.json())
       .then((movies) => {
-
         // Hent alle filmdata og deres runtime samtidig
-        const moviePromises = movies.results.map((movie) => {
-          return fetchMovieRuntime(movie.id).then((runtime) => {
-            return {
-              ...movie,
-              runtime: runtime,
-            };
-          });
-        });
+        const moviePromises = movies.results.map((movie) =>
+          fetchMovieRuntime(movie.id).then((runtime) => ({ ...movie, runtime }))
+        );
 
         // Vent på, at alle filmdata + runtime er hentet
         Promise.all(moviePromises)
           .then((moviesWithRuntime) => {
             divElm2.innerHTML += moviesWithRuntime
               .map((movie) => {
+
                 // billedsti:
-            let imageUrl;
+              let imageUrl;
         
-            if (movie.poster_path) {
+              if (movie.poster_path) {
                 imageUrl = `https://image.tmdb.org/t/p/original/${
                   movie.poster_path
                 }`;
-            } else {
+              } else {
                 imageUrl = 'https://placehold.co/300x450/transparent/000?text=N/A';
-            } 
+              } 
+
                 return `
               <div class="movies2__movie">
                   <a href="detail.html?id=${movie.id}" class="flex1">
@@ -130,18 +110,16 @@ function popular(movies) {
       
                       <ul class="movie__genres">
                           ${movie.genre_ids
-                            .map((id) => {
-                              return genreMap[id]
+                            .map((id) =>
+                              genreMap[id]
                                 ? `<li class="movie__genre"><button class="btn2">${genreMap[id]}</button></li>`
-                                : "";
-                            })
+                                : ""
+                            )
                             .join("")}
                       </ul>
                       <p class="movie__duration duration">
                         <i class="fa-solid fa-clock"></i>
-                        ${Math.floor(movie.runtime / 60)}h ${
-                  movie.runtime % 60
-                }min
+                        ${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}min
                       </p>
                   </article>   
               </div>
@@ -150,13 +128,11 @@ function popular(movies) {
               .join("");
 
             //! movies being observed
-            let observedMovie = divElm2.querySelector(
-              ".movies2__movie:last-of-type"
-            );
+            let observedMovie = divElm2.querySelector(".movies2__movie:last-of-type");
             observerPop.observe(observedMovie);
           })
           .catch((err) => {
-            console.error("Fejl ved hentning af film med runtime:");
+            console.error("Fejl ved hentning af film med runtime:", err);
           });
       })
       .catch((err) => {
@@ -164,6 +140,4 @@ function popular(movies) {
         console.error(err);
       });
   }
-
-  fetchMoviesPop(currentOffsetPop);
 }
