@@ -89,14 +89,23 @@ function popular(movies) {
     fetch(urlList, optionsList)
       .then((res) => res.json())
       .then((movies) => {
+
         // Hent alle filmdata og deres runtime samtidig
         const moviePromises = movies.results.map((movie) =>
           fetchMovieRuntime(movie.id).then((runtime) => ({ ...movie, runtime }))
+          // løber gennem alle movies.results og henter runtime gemmen kaldet af fetchMovieRuntime(movie.id)
+          // her kommer et promise fra fetchMovieRuntime, som venter på runtime
+          // Efter runtime er hentet, tilføjes derefter et nyt filmobjekt med {...movie, runtime}
+          // - ...movie beholder alle eksisterende filmdata
+          // - runtime tilføjer den hentede runtime til filmobjektet 
+          // moviePromises bliver derfor en liste af Promises, hvor hver film venter på at få sin runtime.
         );
 
         // Vent på, at alle filmdata + runtime er hentet
         Promise.all(moviePromises)
+        // Promise.all(moviePromises) sørger for, at vi venter på ALLE film før vi fortsætter.
           .then((moviesWithRuntime) => {
+            // Når alle runtime-værdier er hentet, får vi en liste moviesWithRuntime, hvor hver film har sin runtime tilføjet.
             divElm2.innerHTML += moviesWithRuntime
               .map((movie) => {
                 // billedsti:
