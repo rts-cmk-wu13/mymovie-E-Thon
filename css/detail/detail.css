@@ -21,6 +21,13 @@ h1 {
     margin: 0 auto;
     padding-top: 1.5rem;
 }
+.movie__div {
+    display: flex;
+    justify-content: space-between;
+}
+.movie__div i {
+    cursor: pointer;
+}
 .movie__info {
     width: 100%;
 }

@@ -2,6 +2,7 @@ function info(movie) {
         //! PG rating:
         const usPg = movie.release_dates.results.find(pg => pg.iso_3166_1 === "US");
         let pgRating = "N/A"; // hvis ikke der findes en rating; N/A
+        console.log(usPg);
         
         if (usPg && usPg.release_dates.length > 0 || !usPg) {
             pgRating = usPg.release_dates[0].certification;
@@ -13,7 +14,10 @@ function info(movie) {
         
         //! CONTENT:
       sectionElm1.innerHTML = `
-        <h1>${movie.original_title}</h1>
+      <div class="movie__div">
+          <h1>${movie.original_title}</h1>
+          <i class="fa-regular fa-bookmark" data-favid="${movie.id}"></i>
+      </div>
         <p class="movie__rating"><i class="fa-solid fa-star"></i> ${movie.vote_average.toFixed(
           1
         )}/10 IMDb
@@ -74,4 +78,7 @@ function info(movie) {
     <h2>Description</h2>
     <p>${movie.overview}</p>
     `;
+
+    //! FAVORITES:
+    // favorites();
 }
