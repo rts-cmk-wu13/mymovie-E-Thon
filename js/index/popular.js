@@ -85,8 +85,9 @@ function popular(movies) {
   divElm2.className = "movies2__div";
   sectionElm2.append(divElm2);
 
-  function fetchMoviesPop() {
-    fetch(urlList, optionsList)
+  function fetchMoviesPop(offset) {
+    const urlPop = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${offset}`;
+    fetch(urlPop, optionsList)
       .then((res) => res.json())
       .then((movies) => {
 
@@ -155,7 +156,7 @@ function popular(movies) {
 
             //! movies being observed
             let observedMovie = divElm2.querySelector(
-              ".movies2__movie:last-of-type"
+              ".movies2__movie:nth-last-of-type(2)"
             );
             observerPop.observe(observedMovie);
           })

@@ -7,7 +7,7 @@ function nowPlaying(movies) {
   const observerNow = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        currentOffsetNow = currentOffsetNow + 1;
+        currentOffsetNow++;
         if (currentOffsetNow < pagesNow) {
           fetchMoviesNow(currentOffsetNow);
         } else {
@@ -69,7 +69,7 @@ function nowPlaying(movies) {
           .join("");
 
         //! movies being observed:
-        let observedMovie = divElm.querySelector(".movies__movie:last-of-type");
+        let observedMovie = divElm.querySelector(".movies__movie:nth-last-of-type(2)");
         observerNow.observe(observedMovie);
       })
       .catch((err) => {
