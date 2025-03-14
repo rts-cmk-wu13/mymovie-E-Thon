@@ -1,4 +1,4 @@
-function favorites() {
+function favoritesList() {
     let favorites = readFromLocalStorage("favorites") || [];
     let bookmark = document.querySelectorAll(".movie__div i");
     console.log(bookmark);
@@ -10,7 +10,6 @@ function favorites() {
       if (favorites.some((movie) => movie.id == currentId)) {
         icon.classList.add("fa-solid");
         icon.classList.remove("fa-regular");
-        icon.style.color = "red";
       }
   
       // Håndter favorit-knap klik

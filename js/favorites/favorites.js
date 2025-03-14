@@ -17,9 +17,12 @@ header.innerHTML = `
   `;
 
 initDarkMode();
-favorites();
+// favoritesList();
 
 sectionElmFav.innerHTML = `
   <h1>Favorite Movies</h1>
-  <div class="favorites__list"></div>
+  <div class="favorites__list">
+    <p>Favorites N/A</p>
+    <span >... under construction</span>
+  </div>
 `;

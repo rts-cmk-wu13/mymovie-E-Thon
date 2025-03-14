@@ -24,7 +24,7 @@ td {
     font-style: normal;
 }
 
-h2 {
+h2, .favorites h1 {
     font-family: "Merriweather", serif;
     font-style: normal;
 }
