@@ -1,0 +1,31 @@
+header {
+    height: fit-content;
+}
+.header__nav {
+    width: 100%;
+    height: fit-content;
+}
+.header__div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:  3.875rem 6.4%;
+    width: 100%;
+    margin: 0 auto;
+}
+.header__div i {
+    font-size: 1rem;
+}
+
+.favorites {
+    margin: 0 auto;
+    width: 80%;
+}
+.favorites h1 {
+    text-align: center;
+}
+.favorites__list {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+}
