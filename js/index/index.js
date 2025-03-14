@@ -55,7 +55,7 @@ fetch(urlList, optionsList)
         <li class="footer__link"><a href="#"><i class="fa-solid fa-ticket-simple"></i>
         </a></li>
         
-        <li class="footer__link"><a href="#"><i class="fa-solid fa-bookmark"></i>
+        <li class="footer__link"><a href="../favorites.html"><i class="fa-solid fa-bookmark"></i>
         </a></li>
     </ul>
 </nav>
