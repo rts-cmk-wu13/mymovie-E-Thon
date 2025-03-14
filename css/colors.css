@@ -73,7 +73,7 @@ footer i, .header__links li, .header__links a {
     color: light-dark(var(--icons-light-color), var(--icons-dark-color));
 }
 
-/* DATA-DARK (skal med for at darkmode js virker ifht farveskift */
+/* DATA-DARK (skal med for at darkmode virker) */
 [data-dark="true"] {
     color-scheme: dark;
 }
