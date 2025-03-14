@@ -24,7 +24,8 @@ fetch(urlList, optionsList)
         <ul class="header__links">
             <li class="header__link"><img class="nav__img--movieicon" src="./img/movieicon-dark.svg" alt="Movie icon"></li>
             <li class="header__link"><i class="fa-solid fa-ticket-simple"></i></li>
-            <li class="header__link"><i class="fa-solid fa-bookmark"></i></li>
+            <li class="header__link"><a href="../favorites.html"><i class="fa-solid fa-bookmark"></i>
+            </a></li>
         </ul>
     </div>
     <h1>MyMovies</h1>
