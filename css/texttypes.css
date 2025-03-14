@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/*
+MERRIWEATHER:
+  font-family: "Merriweather", serif;
+  font-weight: 300;
+  font-style: normal;
+
+MULISH:
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+
+*/
+body,
+p,
+a,
+h3,
+figcaption,
+.btn2,
+td {
+    font-family: "Mulish", sans-serif;
+    font-style: normal;
+}
+
+h2, .favorites h1 {
+    font-family: "Merriweather", serif;
+    font-style: normal;
+}
+
+/* WEIGHT*/
+h2 {
+    font-weight: 900;
+}
+
+h3, .btn2 {
+    font-weight: 700;
+}
+
+td:not(:first-child) {
+    font-weight: 600;
+}
+
+figcaption, p, a, td:first-child {
+    font-weight: 400;
+}
+
+
+/* SIZE */
+body {
+    font-size: 1rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+h3 {
+    font-size: .875rem;
+}
+
+figcaption, p, td {
+    font-size: .75rem;
+}
+
+a {
+    font-size: .625rem;
+}
+
+.btn2 {
+    font-size: .5rem;
+
+}
+
+
+/* LETTER SPACING */
+body, h1, h2, h3, figcaption, p, a, .btn2, td {
+    letter-spacing: 2%;
+}

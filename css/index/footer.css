@@ -1,0 +1,27 @@
+.footer {
+    width: 100%;
+}
+.footer__nav {
+    padding: 1.125rem 13.33%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer__links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__link a {
+    max-width: 1.5rem;
+    width: 100%;
+}
+
+.footer__link i {
+    width: 100%;
+    font-size: 1rem;
+}
+
+.footer__link:nth-of-type(2) i {
+    transform: rotate(90deg);
+}

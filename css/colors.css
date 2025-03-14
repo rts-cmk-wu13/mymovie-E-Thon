@@ -1,0 +1,89 @@
+
+:root {
+    color-scheme: light dark;
+
+    /* PRIMARY */
+    --body-color: #F2F2F2;
+    --rating-color: #FFC319;
+    --text-color: #9C9C9C;
+    --border-color: #D8D8D8;
+    --textBtn2-color: #88A4E8;
+    --genreBtn2-color: #DBE3FF;
+    --transparent-color: rgba(255, 255, 255, 0);
+    
+    /* LIGHT MODE */
+    --background-light-color: #FFFFFF;
+    --header-light-color: #110E47;
+    --text-light-color: #000000;
+    --greyBtn-light-color: #AAA9B1;
+    --icons-light-color: #BCBCCD;
+    
+    
+    /* DARKMODE */
+    --background-dark-color: #15141F;
+    --footer-dark-color: #000000;
+    --header-dark-color: #DBE3FF;
+    --text-dark-color: #F0EFFA;
+    --greyBtn-dark-color: #E5E4EA;
+    --icons-dark-color: #F0EFFA;
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+#root, main {
+    background-color: light-dark(var(--background-light-color) , var(--background-dark-color));
+}
+.footer__nav, .header__links {
+    background-color: light-dark(var(--background-light-color) , var(--footer-dark-color));
+}
+
+h2, figcaption, .favorites h1 {
+    color: light-dark(var(--header-light-color), var(--header-dark-color));
+}
+
+.header__burger span {
+    background-color: light-dark(var(--header-light-color), var(--header-dark-color));
+}
+
+h3, .duration {
+    color: light-dark(var(--text-light-color), var(--text-dark-color));
+}
+p, tr:first-of-type {
+    color: var(--text-color);
+}
+.movie__rating i {
+    color: var(--rating-color);
+}
+.btn1{
+    background-color: var(--transparent-color);
+}
+.btn1 {
+    color: light-dark(var(--greyBtn-light-color), var(--greyBtn-dark-color));
+}
+.btn2 {
+    color: var(--textBtn2-color);
+    background-color: var(--genreBtn2-color);
+}
+.header__div a>i {
+    color: var(--background-light-color);
+}
+footer i, .header__links li, .header__links a {
+    color: light-dark(var(--icons-light-color), var(--icons-dark-color));
+}
+
+/* DATA-DARK (skal med for at darkmode virker) */
+[data-dark="true"] {
+    color-scheme: dark;
+}
+[data-dark="false"] {
+    color-scheme: light;
+}
+
+
+
+.ytp-large-play-button {
+    color: blue;
+    background-color: pink;
+}

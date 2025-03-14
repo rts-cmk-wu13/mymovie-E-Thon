@@ -1,0 +1,72 @@
+
+h1 {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: normal;
+    letter-spacing: 2%;
+    font-size: 1rem;
+    color: light-dark(var(--header-light-color), var(--header-dark-color));
+}
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem 6.13% 1.25rem 6.4%;
+}
+.header__menu {
+    max-width: 1.5rem;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+.header__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    column-gap: 20rem;
+    height: 1.25rem;
+    width: 1.25rem;
+    padding: 0.25rem;
+    position: absolute;
+    z-index: 100;
+}
+.header__burger span {
+    height: 12.5%;
+    display: block;
+    border-radius: 075px;
+}
+.header__burger span:first-of-type {
+    width: 50%;
+    align-self: end;
+}
+.header__burger span:nth-of-type(2) {
+    width: 100%;
+    align-self: center;
+}
+.header__burger span:last-of-type {
+    width: 50%;
+}
+.header__links {
+    position: absolute;
+    top: -1.25rem;
+    left: -3.5rem;
+    display: none;
+    align-items: center;
+    justify-content: start;
+    z-index: 5;
+    width: fit-content;
+    height: 100vh;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 8rem 1.7rem 8rem 3.5rem;
+    border-radius: 5px;
+}
+.header__links a {
+    text-decoration: none;
+    font-size: 1rem;
+}
+.header__link:nth-of-type(2) i {
+    transform: rotate(90deg);
+}
+.nav__img--movieicon {
+    width: 1.8rem;
+}
