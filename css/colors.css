@@ -69,7 +69,7 @@ p, tr:first-of-type {
 .header__div a>i {
     color: var(--background-light-color);
 }
-footer i, .header__links a {
+footer i, .header__links li, .header__links a {
     color: light-dark(var(--icons-light-color), var(--icons-dark-color));
 }
 
