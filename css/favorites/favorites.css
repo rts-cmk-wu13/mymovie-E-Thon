@@ -24,15 +24,22 @@ header {
 .favorites h1 {
     text-align: center;
 }
-.favorites__list p {
+.favorites__list {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 2rem 0;
+    height:65vh;
+    /* margin: 10rem 0; */
+}
+.favorites__list p {
     font-size: 1.1rem;
+    padding-bottom: 1rem;
 }
 .favorites__list span {
     margin: 0 auto;
     text-align: center;
     display: block;
+    font-style: italic;
+    font-size: .75rem;
 }
