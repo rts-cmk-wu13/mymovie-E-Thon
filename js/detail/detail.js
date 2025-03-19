@@ -1,7 +1,3 @@
-import header from "./header.js";
-import info from "./info.js";
-import cast from "./cast.js";
-
 let search = window.location.search;
 let params = new URLSearchParams(search);
 let id = params.get("id");
@@ -11,9 +7,9 @@ let divOuterElm = document.createElement("div");
 divOuterElm.className = "details";
 document.querySelector("main").append(divOuterElm);
 
-export let sectionElm1 = document.createElement("section")
+let sectionElm1 = document.createElement("section")
 sectionElm1.className = "movie"
-export let sectionElm2 = document.createElement("section")
+let sectionElm2 = document.createElement("section")
 sectionElm2.className = "cast"
 
 divOuterElm.append(sectionElm1, sectionElm2)

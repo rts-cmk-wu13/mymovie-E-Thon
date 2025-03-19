@@ -1,7 +1,5 @@
-import { sectionElm1 } from "./detail.js";
-
-export default function info(movie) {
-        //! PG rating:
+function info(movie) {
+  //! PG rating:
         const usPg = movie.release_dates.results.find(pg => pg.iso_3166_1 === "US");
         let pgRating = "N/A"; // hvis ikke der findes en rating; N/A
         
