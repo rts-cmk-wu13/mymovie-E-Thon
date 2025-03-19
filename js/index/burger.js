@@ -1,4 +1,4 @@
-function burger() {
+export default function burger() {
 const menu = document.querySelector(".header__links");
 const burger = document.querySelector(".header__burger");
 const upperBar = document.querySelector(".header__burger span:first-of-type")

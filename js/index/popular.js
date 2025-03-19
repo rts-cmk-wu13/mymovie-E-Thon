@@ -1,4 +1,6 @@
-function popular(movies) {
+import { optionsList } from "./optionList.js";
+
+export default function popular(movies) {
   //! FETCH AF DATA FRA DETAIL:
   function fetchData(url, mapObject, key) {
     // URL; API-URL der skal hentes data fra
