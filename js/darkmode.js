@@ -1,4 +1,4 @@
-function initDarkMode() {
+export default function initDarkMode() {
   let rootElm = document.documentElement; // document element kører før noget bliver valideret
   let switchElm = document.querySelector("#switch");
   let isDarkMode = readFromLocalStorage("isDarkMode");

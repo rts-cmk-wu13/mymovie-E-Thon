@@ -1,4 +1,6 @@
-function header(movie) {
+import initDarkMode from "../darkmode.js";
+
+export default function header(movie) {
   let header = document.querySelector("header");
   header.innerHTML = `
         <nav class="header__nav">
