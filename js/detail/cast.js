@@ -1,7 +1,4 @@
-import seeMore from "./seemore.js";
-import { sectionElm2 } from "./detail.js";
-
-export default function cast(movie) {
+function cast(movie) {
     sectionElm2.innerHTML = `
             <div class="cast__bar">
                 <h2 class="cast__header">Cast</h2>

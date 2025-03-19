@@ -1,4 +1,4 @@
-export default function seeMore() {
+function seeMore() {
   const gridContainer = document.querySelector(".cast__actors");
 
   // array på alle child elementer i movie__actors grid elementet:

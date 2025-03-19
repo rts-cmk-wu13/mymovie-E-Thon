@@ -1,6 +1,4 @@
-import { optionsList } from "./optionList.js";
-
-export default function nowPlaying(movies) {
+function nowPlaying(movies) {
   //! PAGES COUNT:
   let pagesNow = movies.total_pages;
 
