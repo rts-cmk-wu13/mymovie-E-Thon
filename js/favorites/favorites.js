@@ -1,3 +1,5 @@
+import initDarkMode from "../darkmode.js";
+
 let sectionElmFav = document.createElement("section");
 sectionElmFav.className = "favorites";
 document.querySelector("main").append(sectionElmFav);
